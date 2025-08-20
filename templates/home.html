@@ -1,3 +1,158 @@
-<h1>
-    Hello World!
-</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California House Price Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4a5568;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .prediction-text {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f7fafc;
+            text-align: center;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>California House Price Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+                <label for="MedInc">Median Income</label>
+                <input type="text" id="MedInc" name="MedInc" placeholder="Enter median income" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="HouseAge">House Age</label>
+                <input type="text" id="HouseAge" name="HouseAge" placeholder="Enter house age" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="AveRooms">Average Rooms</label>
+                <input type="text" id="AveRooms" name="AveRooms" placeholder="Enter average rooms" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="AveBedrms">Average Bedrooms</label>
+                <input type="text" id="AveBedrms" name="AveBedrms" placeholder="Enter average bedrooms" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="Population">Population</label>
+                <input type="text" id="Population" name="Population" placeholder="Enter population" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="AveOccup">Average Occupancy</label>
+                <input type="text" id="AveOccup" name="AveOccup" placeholder="Enter average occupancy" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="Latitude">Latitude</label>
+                <input type="text" id="Latitude" name="Latitude" placeholder="Enter latitude" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="Longitude">Longitude</label>
+                <input type="text" id="Longitude" name="Longitude" placeholder="Enter longitude" required="required" />
+            </div>
+            <button type="submit">Predict Price</button>
+        </form>
+        {% if prediction_text %}
+        <div class="prediction-text">
+            {{prediction_text}}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+</body>
+</html>
