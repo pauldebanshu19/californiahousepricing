@@ -27,3 +27,4 @@ jobs:
           github_deployment: true                         # Optional - Create a GitHub deployment
           github_token: ${{ secrets.GITHUB_TOKEN }}       # Required only if github_deployment is true
           deployment_environment: "production"            # Optional - Environment for GitHub deployment
+          clear_cache: false
